@@ -1,5 +1,5 @@
 import {Navigate, RouterProvider} from "react-router";
-import {createBrowserRouter} from "react-router-dom";
+import {BrowserRouterProps, createBrowserRouter} from "react-router-dom";
 import Paths from "../../Paths";
 import {TemplatePage} from "../../template/TemplatePage";
 import {UsersPage} from "../users/UsersPage";
@@ -7,6 +7,7 @@ import {UsersPage} from "../users/UsersPage";
 
 export default function AppRouter () {
 
+    const options: BrowserRouterProps = { basename: "/systemair"}
     const router = createBrowserRouter([
         {
             path: Paths.HOME,
@@ -30,8 +31,12 @@ export default function AppRouter () {
         {
             path: Paths.USER,
             element: <div>TODO</div>
+        },
+        {
+            path: "*",
+            element: <Navigate to={Paths.USERS} />
         }
-    ])
+    ], options)
 
     return(<RouterProvider router={router} />);
 }
