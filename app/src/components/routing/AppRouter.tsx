@@ -7,7 +7,6 @@ import {UsersPage} from "../users/UsersPage";
 
 export default function AppRouter () {
 
-    const options: BrowserRouterProps = { basename: "/systemair"}
     const router = createBrowserRouter([
         {
             path: Paths.HOME,
@@ -36,7 +35,7 @@ export default function AppRouter () {
             path: "*",
             element: <Navigate to={Paths.USERS} />
         }
-    ], options)
+    ], { basename: "/systemair"})
 
     return(<RouterProvider router={router} />);
 }
